@@ -2,7 +2,7 @@ import sys
 import uvicorn
 from fastapi import FastAPI
 from reader import get_data
-from api.router import api_router
+from router import GeneratedRouter
 
 filepath = sys.argv[-1]
 (data, success) = get_data(filepath)
@@ -16,6 +16,8 @@ description = data.description or "Return pseudorandom data"
 paths = data.paths
 
 app = FastAPI(title=title, description=description)
-app.include_router(api_router)
+
+router = GeneratedRouter(paths)
+app.include_router(router)
 
 uvicorn.run(app, host="0.0.0.0", port=9876, log_level="info")
