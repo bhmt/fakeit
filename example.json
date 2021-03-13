@@ -1,0 +1,44 @@
+{
+    "title": "Example",
+    "description": "Return pseudorandom data",
+    "paths": {
+        "b": {
+            "name": "bool",
+            "type": "boolean"
+        },
+        "n": {
+            "name": "num",
+            "type": "number"
+        },
+        "nr": {
+            "name": "num",
+            "type": "number",
+            "range": "50..100"
+        },
+        "s": {
+            "name": "str",
+            "type": "string",
+            "range": 10
+        },
+        "a": {
+            "name": "array",
+            "type": "array:string",
+            "range": "..5"
+        },
+        "o": {
+            "name": "complex",
+            "type": "object",
+            "schema": [
+                {
+                    "name": "first",
+                    "type": "number",
+                    "range": 5
+                },
+                {
+                    "name": "second",
+                    "type": "string"
+                }
+            ]
+        }
+    }
+}
