@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
+from typing import Callable
 import random
 import string
 
@@ -12,12 +13,16 @@ class Dummy(BaseModel):
         extra = 'allow'
 
 
-def create_data(values) -> Dummy:
+def create_data(value) -> Callable:
+    def new() -> Dummy:
+        d = Dummy()
+        d.__setattr__("number", random.random())
+        d.__setattr__(
+            "string",
+            ''.join(random.choice(letters) for i in range(10)))
+        return d
 
-    d = Dummy()
-    d.__setattr__("number", random.random())
-    d.__setattr__("string", ''.join(random.choice(letters) for i in range(10)))
-    return d
+    return new
 
 
 class GeneratedRouter(APIRouter):
