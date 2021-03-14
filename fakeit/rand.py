@@ -36,13 +36,11 @@ def number(interval: Union[str, int] = None) -> float:
     return uniform(0, interval)
 
 
-def string(interval: Union[str, int] = default_interval) -> str:
-    str_length = default_interval
+def string(interval: Union[str, int] = None) -> str:
+    str_length = interval or default_interval
     if isinstance(interval, str):
         _min, _max = __parse_string_interval__(interval)
         str_length = int(uniform(_min, _max))
-    else:
-        str_length = int(interval)
     return ''.join(choice(letters) for _ in range(str_length))
 
 
