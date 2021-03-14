@@ -11,7 +11,7 @@ class JsonObject:
         return json.dumps(self, default=lambda obj: obj.__dict__, sort_keys=True, indent=2)
 
 
-def get_definitions(data: object) -> (Union[Dict[str, Definition], str], bool):
+def get_definitions_mapping(data: object) -> (Union[Dict[str, Definition], str], bool):
     route_definition_map = dict()
     msg = []
     for (key, value) in data.paths.__dict__.items():

@@ -1,8 +1,6 @@
 import sys
-import uvicorn
-from fastapi import FastAPI
-from reader import get_data, get_definitions
-from router import GeneratedRouter
+from reader import get_data, get_definitions_mapping
+from serve import serve
 
 
 filepath = sys.argv[-1]
@@ -12,18 +10,13 @@ if success is False:
     print(data)
     sys.exit(-1)
 
-(definitions, success) = get_definitions(data)
+(definitions_mapping, success) = get_definitions_mapping(data)
 if success is False:
-    print(definitions)
+    print(definitions_mapping)
     sys.exit(-1)
 
-title = data.title or "FakeIt"
-description = data.description or "Return pseudorandom data"
-paths = data.paths
-
-app = FastAPI(title=title, description=description)
-
-router = GeneratedRouter(paths)
-app.include_router(router)
-
-uvicorn.run(app, host="0.0.0.0", port=9876, log_level="info")
+serve(
+    data.__dict__.get("title"),
+    data.__dict__.get("description"),
+    definitions_mapping
+)

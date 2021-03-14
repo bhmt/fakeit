@@ -9,7 +9,7 @@ class GeneratedRouter(APIRouter):
 
     def __init__(self, paths):
         super().__init__()
-        for (key, value) in paths.__dict__.items():
+        for (key, value) in paths.items():
             super().add_api_route(
                 ''.join([self.base_path, key]),
                 self.create_data(value),
