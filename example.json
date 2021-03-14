@@ -26,15 +26,41 @@
         },
         "o": {
             "type": "object",
-            "name": "complex",
+            "name": "root",
             "model": [
                 {
-                    "name": "first",
-                    "type": "number",
-                    "interval": 5
+                    "type": "object",
+                    "name": "first_lvl_1",
+                    "model": [
+                        {
+                            "type": "object",
+                            "name": "first_lvl_2",
+                            "model": [
+                                {
+                                    "type": "object",
+                                    "name": "first_lvl_3",
+                                    "model": [
+                                        {
+                                            "name": "first_lvl_4",
+                                            "type": "number",
+                                            "interval": 5
+                                        },
+                                        {
+                                            "name": "second_lvl_4",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "second_lvl_3",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
-                    "name": "second",
+                    "name": "second_lvl_1",
                     "type": "string"
                 }
             ]
