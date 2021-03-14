@@ -1,0 +1,83 @@
+{
+    "title": "Example",
+    "description": "Work in progress",
+    "paths": {
+        "boolean_value": {
+            "type": "boolean"
+        },
+        "number_object": {
+            "type": "number",
+            "name": "num"
+        },
+        "number_object_range": {
+            "type": "number",
+            "name": "num",
+            "interval": "50:100"
+        },
+        "string_lenght_up_to_10": {
+            "type": "string",
+            "name": "str",
+            "interval": 10
+        },
+        "array_strings_up_to_15": {
+            "type": "array:string:5",
+            "name": "array",
+            "interval": ":15"
+        },
+        "complex_basic_object": {
+            "type": "object",
+            "model": [
+                {
+                    "type": "number",
+                    "name": "num",
+                    "interval": "18:65"
+                },
+                {
+                    "type": "string",
+                    "name": "str"
+                }
+            ]
+        },
+        "complex_object": {
+            "type": "object",
+            "name": "root",
+            "model": [
+                {
+                    "type": "object",
+                    "name": "first_lvl_1",
+                    "model": [
+                        {
+                            "type": "object",
+                            "name": "first_lvl_2",
+                            "model": [
+                                {
+                                    "type": "object",
+                                    "name": "first_lvl_3",
+                                    "model": [
+                                        {
+                                            "name": "first_lvl_4",
+                                            "type": "number",
+                                            "interval": 5
+                                        },
+                                        {
+                                            "name": "second_lvl_4",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "second_lvl_3",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "second_lvl_1",
+                    "type": "string"
+                }
+            ]
+        }
+    }
+}
