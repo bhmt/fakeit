@@ -14,6 +14,12 @@ class JsonObject:
 def get_definitions_mapping(data: object) -> (Union[Dict[str, Definition], str], bool):
     route_definition_map = dict()
     msg = []
+
+    check_paths = data.__dict__.get("paths")
+    check_keys = check_paths.__dict__.keys() if check_paths else None
+    if not check_paths or not check_keys:
+        return ("paths must be defined", False)
+
     for (key, value) in data.paths.__dict__.items():
         try:
             route_definition_map[key] = Definition(
