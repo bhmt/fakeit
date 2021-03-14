@@ -1,7 +1,8 @@
 from fastapi import APIRouter
-from typing import Callable
+from typing import Callable, Union
 from models.dummy import Dummy
 import rand
+from gen import create_data
 
 
 class GeneratedRouter(APIRouter):
@@ -12,15 +13,5 @@ class GeneratedRouter(APIRouter):
         for (key, value) in paths.items():
             super().add_api_route(
                 ''.join([self.base_path, key]),
-                self.create_data(value),
-                response_model=Dummy
+                create_data(value)
             )
-
-    def create_data(self, value: object) -> Dummy:
-        def new() -> Dummy:
-            d = Dummy()
-            d.__setattr__("number", rand.number("30:50"))
-            d.__setattr__("string", rand.string(36))
-            return d
-
-        return new
