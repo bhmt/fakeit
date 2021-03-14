@@ -1,28 +1,7 @@
 from fastapi import APIRouter
-from pydantic import BaseModel
 from typing import Callable
-import random
-import string
-
-letters = string.ascii_letters
-
-
-class Dummy(BaseModel):
-    class Config:
-        orm_mode = True
-        extra = 'allow'
-
-
-def create_data(value) -> Callable:
-    def new() -> Dummy:
-        d = Dummy()
-        d.__setattr__("number", random.random())
-        d.__setattr__(
-            "string",
-            ''.join(random.choice(letters) for i in range(10)))
-        return d
-
-    return new
+from models.dummy import Dummy
+import rand
 
 
 class GeneratedRouter(APIRouter):
@@ -33,6 +12,15 @@ class GeneratedRouter(APIRouter):
         for (key, value) in paths.__dict__.items():
             super().add_api_route(
                 ''.join([self.base_path, key]),
-                create_data(value),
+                self.create_data(value),
                 response_model=Dummy
             )
+
+    def create_data(self, value: object) -> Dummy:
+        def new() -> Dummy:
+            d = Dummy()
+            d.__setattr__("number", rand.number("30:50"))
+            d.__setattr__("string", rand.string(36))
+            return d
+
+        return new

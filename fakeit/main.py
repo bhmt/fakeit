@@ -1,14 +1,20 @@
 import sys
 import uvicorn
 from fastapi import FastAPI
-from reader import get_data
+from reader import get_data, get_definitions
 from router import GeneratedRouter
 
-filepath = sys.argv[-1]
-(data, success) = get_data(filepath)
 
+filepath = sys.argv[-1]
+
+(data, success) = get_data(filepath)
 if success is False:
     print(data)
+    sys.exit(-1)
+
+(definitions, success) = get_definitions(data)
+if success is False:
+    print(definitions)
     sys.exit(-1)
 
 title = data.title or "FakeIt"
