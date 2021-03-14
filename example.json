@@ -27,7 +27,7 @@
         "o": {
             "type": "object",
             "name": "complex",
-            "schema": [
+            "model": [
                 {
                     "name": "first",
                     "type": "number",
