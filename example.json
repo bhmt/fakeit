@@ -2,29 +2,43 @@
     "title": "Example",
     "description": "Work in progress",
     "paths": {
-        "b": {
+        "boolean_value": {
             "type": "boolean"
         },
-        "n": {
+        "number_object": {
             "type": "number",
             "name": "num"
         },
-        "nr": {
+        "number_object_range": {
             "type": "number",
             "name": "num",
             "interval": "50:100"
         },
-        "s": {
+        "string_lenght_up_to_10": {
             "type": "string",
             "name": "str",
             "interval": 10
         },
-        "a": {
+        "array_strings_up_to_15": {
             "type": "array:string:5",
             "name": "array",
             "interval": ":15"
         },
-        "o": {
+        "complex_basic_object": {
+            "type": "object",
+            "model": [
+                {
+                    "type": "number",
+                    "name": "num",
+                    "interval": "18:65"
+                },
+                {
+                    "type": "string",
+                    "name": "str"
+                }
+            ]
+        },
+        "complex_object": {
             "type": "object",
             "name": "root",
             "model": [
