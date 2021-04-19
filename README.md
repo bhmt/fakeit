@@ -9,7 +9,7 @@
 Generate API `GET` endpoints to return objects defined in a json file.
 Get object with values set to random data for each endpoint call.
 
-Running the project will result in a FastAPI application served by uvicorn on host `0.0.0.0` and port `9876`.
+Running the project will result in a FastAPI application served on host `0.0.0.0` and port `9876`.
 Since it is built using FastAPI, swagger UI is available at `0.0.0.0:9876/docs`.
 
 ### How to run
