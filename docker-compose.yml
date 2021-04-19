@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  fakeit:
+    build:
+      context: .
+      args:
+        INPUT: ${INPUT-example.json}
+    container_name: fakeit
+    ports:
+      - ${PORT-9876}:9876
